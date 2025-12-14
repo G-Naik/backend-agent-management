@@ -27,12 +27,12 @@ const agentlist = require("./routes/agentList")
 const app = express(); 
 app.use(cookieParser());
 app.use(express.json(),cors(),express.urlencoded({extended: false}))
-// app.use(
-//   cors({
-//     origin: "https://localhost:3000",
-//     credentials: true
-//   })
-// );
+app.use(
+  cors({
+    origin: process.env.Main_URL,
+    credentials: true
+  })
+);
 
 app.use("/login",login)
 app.use("/agent", verifyJsonToken, agent)
